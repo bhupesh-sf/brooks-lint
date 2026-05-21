@@ -26,18 +26,34 @@ Guidance for Claude Code when modifying this repository. For repo layout, instal
 
 ## How the Skills Work
 
-1. `hooks/session-start` injects a brief skill list into every session
+1. `hooks/session-start` runs at session open: outputs a skill-list banner to the session context AND installs short-form command wrappers to `~/.claude/commands/`
 2. Triggered skill loads its `SKILL.md` via the Skill tool
 3. `SKILL.md` instructs Claude to read `_shared/common.md` (Iron Law, Config, Report Template)
 4. Claude reads the mode-specific guide + relevant decay-risks file
 5. Findings follow the Iron Law: **Symptom → Source → Consequence → Remedy**
 6. Output uses the standard report template with Health Score (base 100; deductions per finding, floor 0)
 
+## Adding a New Skill
+
+Each skill is two files inside `skills/{name}/`:
+
+- `SKILL.md` — frontmatter with `name`, `description` (must include "Do NOT trigger for:" clause), and a `Process` section (3–6 bullets citing guide step ranges)
+- `{name}-guide.md` — sequentially numbered steps, no gaps; sub-steps like `Step 2a` are allowed
+
+Checklist:
+1. Create `skills/{name}/SKILL.md` and `skills/{name}/{name}-guide.md`
+2. Add ≥1 happy-path eval scenario + ≥1 false-positive scenario (`no_risk_codes: true`) to `evals/evals.json`
+3. Run `npm run validate` (structure + step continuity) and `npm run evals` (eval schema)
+4. Test locally: `cp -r skills/* ~/.claude/skills/brooks-lint/` → trigger in a Claude session → verify output
+5. Restore the marketplace version using the commands in the "Skill sync after edit" gotcha above
+
 ## Eval Suite
 
 `evals/evals.json` contains 49 benchmark scenarios covering R1–R6 (code decay) and T1–T6 (test decay), including false-positive / tradeoff cases that must NOT be flagged. Each scenario has `id`, `name`, `prompt`, `expected_output`, `mode`, `files`. Optional flags (mutually exclusive): `no_risk_codes: true` (no risk codes expected in output) or `no_health_score: true` (Health Score suppression test).
 
 To add a scenario: append to the `evals` array with the next sequential `id` and the relevant risk code. Validate structure with `npm run evals`; live-test with `npm run evals:live` (requires `ANTHROPIC_API_KEY`).
+
+`expected_output` should describe the Iron Law finding (Symptom + risk code) and a Health Score range; it does NOT need to be verbatim — the evaluator matches semantics. For false-positive / tradeoff scenarios, set `no_risk_codes: true` and describe what must NOT appear in output.
 
 ## Development Commands
 
