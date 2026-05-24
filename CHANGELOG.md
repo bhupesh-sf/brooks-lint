@@ -6,6 +6,27 @@ All notable changes to brooks-lint are documented here.
 
 ---
 
+## [1.3.0] - 2026-05-24
+
+### Added
+
+- **Codex marketplace icon** — created `assets/logo.svg` and added `composerIcon`
+  field to `.codex-plugin/plugin.json` for marketplace display.
+- **Codex interface metadata** — added `interface` configuration to
+  `.codex-plugin/plugin.json` for richer marketplace listing.
+
+### Fixed
+
+- **`brooks-sweep` debt scoring** — inlined the Pain × Spread severity rubric
+  directly into `sweep-guide.md` (7–9 Critical, 4–6 Warning, 1–3 Suggestion),
+  removing an implicit cross-skill dependency on `../brooks-debt/debt-guide.md`.
+
+### Changed
+
+- **`CLAUDE.md`** — fixed 4 stale facts and added skill authoring / eval guidance.
+
+---
+
 ## [1.2.3] - 2026-05-13
 
 ### Added
