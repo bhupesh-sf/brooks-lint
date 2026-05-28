@@ -1,10 +1,10 @@
 /**
  * Dev-only PostToolUse hook for working ON brooks-lint (not shipped to plugin users).
  *
- * Reads the Claude Code PostToolUse JSON payload from stdin, and when an edit
- * touches a drift-prone file:
- *   - runs `npm run validate` (manifest/badge/changelog/book-count/skill-step gate)
- *   - mirrors skills/ into the local-test install IF that dir already exists
+ * Reads the Claude Code PostToolUse JSON payload from stdin and runs
+ * `npm run validate` (manifest/badge/changelog/book-count/skill-step gate) when an
+ * edit touches a drift-prone file. Local-test skill loading is handled separately
+ * by a symlink (~/.claude/skills/brooks-lint -> repo skills/), not by this hook.
  *
  * Wired up from .claude/settings.local.json (maintainer-local, untracked):
  *   PostToolUse → command: node "$CLAUDE_PROJECT_DIR/scripts/dev-post-tool-use.mjs"
@@ -13,8 +13,6 @@
  */
 
 import { execFileSync } from "node:child_process";
-import { cpSync, existsSync } from "node:fs";
-import { homedir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -57,16 +55,8 @@ try {
 }
 if (!rel) process.exit(0);
 
-const isSkillEdit = rel.startsWith("skills/");
 const needsValidate =
-  isSkillEdit || ROOT_MANIFESTS.has(rel) || rel.endsWith("source-coverage.md");
-
-if (isSkillEdit) {
-  const localInstall = path.join(homedir(), ".claude", "skills", "brooks-lint");
-  if (existsSync(localInstall)) {
-    cpSync(path.join(repoRoot, "skills"), localInstall, { recursive: true });
-  }
-}
+  rel.startsWith("skills/") || ROOT_MANIFESTS.has(rel) || rel.endsWith("source-coverage.md");
 
 if (needsValidate) {
   try {
