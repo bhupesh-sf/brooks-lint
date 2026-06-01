@@ -24,6 +24,14 @@
   <img src="https://img.shields.io/github/stars/hyhmrright/brooks-lint?style=social" alt="GitHub Stars">
 </p>
 
+<p align="center">
+  <a href="https://hyhmrright.github.io/brooks-lint/"><img src="assets/hero.png" alt="brooks-lint turns messy code into a cited Symptom → Source → Consequence → Remedy verdict" width="820"></a>
+</p>
+
+<p align="center">
+  <strong><a href="https://hyhmrright.github.io/brooks-lint/">→ Visit the website</a></strong>
+</p>
+
 ---
 
 > *"The bearing of a child takes nine months, no matter how many women are assigned."*

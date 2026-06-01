@@ -11,6 +11,9 @@
 <meta property="og:description" content="AI code reviews grounded in twelve classic engineering books. Consistent. Traceable. Actionable.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hyhmrright.github.io/brooks-lint/">
+<meta property="og:image" content="https://hyhmrright.github.io/brooks-lint/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hyhmrright.github.io/brooks-lint/hero.png">
 <style>
   :root {
     --paper:      #f7f1e4;
@@ -98,6 +101,9 @@
   }
   .quote cite { display: block; font-style: normal; font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
   .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+  .hero-shot { margin: 46px auto 0; max-width: 900px; }
+  .hero-shot img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule);
+    box-shadow: 0 18px 50px rgba(80,55,15,.16); display: block; }
 
   /* ---- Stat strip ---- */
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule);
@@ -195,6 +201,7 @@
       <a class="hide-sm" href="#risks" data-en="Decay Risks" data-zh="腐化风险">Decay Risks</a>
       <a class="hide-sm" href="#sample" data-en="Example" data-zh="示例">Example</a>
       <a class="hide-sm" href="#benchmark" data-en="Benchmark" data-zh="基准">Benchmark</a>
+      <a class="hide-sm" href="gallery.html" data-en="Gallery" data-zh="画廊">Gallery</a>
       <a class="hide-sm" href="#install" data-en="Install" data-zh="安装">Install</a>
       <span class="lang-toggle">
         <button data-set-lang="en">EN</button>
@@ -227,6 +234,10 @@
       <div class="cta-row">
         <a class="btn btn-primary" href="#install" data-en="Get Started" data-zh="开始使用">Get Started</a>
         <a class="btn btn-ghost" href="https://github.com/hyhmrright/brooks-lint" target="_blank" rel="noopener" data-en="View on GitHub" data-zh="GitHub 查看">View on GitHub</a>
+      </div>
+
+      <div class="hero-shot">
+        <img src="hero.png" alt="brooks-lint turns messy code into a cited Symptom → Source → Consequence → Remedy verdict" loading="eager">
       </div>
 
       <div class="stats">
@@ -470,7 +481,7 @@ Install the brooks-lint skill from hyhmrright/brooks-lint</div>
   <div class="wrap foot-in">
     <div class="foot-links">
       <a href="https://github.com/hyhmrright/brooks-lint" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://github.com/hyhmrright/brooks-lint/blob/main/docs/gallery.md" target="_blank" rel="noopener" data-en="Gallery" data-zh="示例画廊">Gallery</a>
+      <a href="gallery.html" data-en="Gallery" data-zh="示例画廊">Gallery</a>
       <a href="https://github.com/hyhmrright/brooks-lint/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-en="Contributing" data-zh="参与贡献">Contributing</a>
       <a href="https://github.com/hyhmrright/brooks-lint/blob/main/CHANGELOG.md" target="_blank" rel="noopener" data-en="Changelog" data-zh="更新日志">Changelog</a>
     </div>
