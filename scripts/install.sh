@@ -13,8 +13,8 @@
 #   ./scripts/install.sh <platform> [--project]
 #   curl -fsSL https://raw.githubusercontent.com/hyhmrright/brooks-lint/main/scripts/install.sh | bash -s -- <platform>
 #
-# Platforms: opencode cursor windsurf antigravity pi kiro copilot claude agents
-#   agents = the vendor-neutral ~/.agents/skills folder (read by Cursor, Copilot, pi)
+# Platforms: opencode cursor windsurf antigravity pi kiro copilot droid gemini codex claude agents
+#   agents = the vendor-neutral ~/.agents/skills folder (read by Cursor, Copilot, pi, Gemini, Codex)
 #
 # Flags:
 #   --project   install into the current repo (./.<platform>/skills) instead of the global folder
@@ -24,7 +24,7 @@
 set -euo pipefail
 
 REPO_URL="https://github.com/hyhmrright/brooks-lint.git"
-PLATFORMS="opencode cursor windsurf antigravity pi kiro copilot claude agents"
+PLATFORMS="opencode cursor windsurf antigravity pi kiro copilot droid gemini codex claude agents"
 
 err()  { printf '\033[31merror:\033[0m %s\n' "$*" >&2; }
 info() { printf '\033[36m›\033[0m %s\n' "$*"; }
@@ -58,6 +58,9 @@ global_dir() {
     pi)          printf '%s' "$HOME/.pi/agent/skills" ;;
     kiro)        printf '%s' "$HOME/.kiro/skills" ;;
     copilot)     printf '%s' "$HOME/.copilot/skills" ;;
+    droid)       printf '%s' "$HOME/.factory/skills" ;;
+    gemini)      printf '%s' "$HOME/.gemini/skills" ;;
+    codex)       printf '%s' "$HOME/.codex/skills" ;;
     claude)      printf '%s' "$HOME/.claude/skills" ;;
     agents)      printf '%s' "$HOME/.agents/skills" ;;
     *)           return 1 ;;
@@ -73,6 +76,9 @@ project_dir() {
     pi)          printf '%s' "$PWD/.pi/skills" ;;
     kiro)        printf '%s' "$PWD/.kiro/skills" ;;
     copilot)     printf '%s' "$PWD/.github/skills" ;;
+    droid)       printf '%s' "$PWD/.factory/skills" ;;
+    gemini)      printf '%s' "$PWD/.gemini/skills" ;;
+    codex)       printf '%s' "$PWD/.codex/skills" ;;
     claude)      printf '%s' "$PWD/.claude/skills" ;;
     agents)      printf '%s' "$PWD/.agents/skills" ;;
     *)           return 1 ;;

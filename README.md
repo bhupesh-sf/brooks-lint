@@ -226,9 +226,10 @@ cp -r skills/* ~/.claude/skills/brooks-lint/
 
 #### Manual Install
 ```bash
-mkdir -p ~/.gemini/skills/brooks-lint
-cp -r skills/* ~/.gemini/skills/brooks-lint/
+mkdir -p ~/.gemini/skills
+cp -r skills/* ~/.gemini/skills/      # flat — Gemini discovers skills only one level deep
 ```
+> Or simply: `./scripts/install.sh gemini`
 
 ### Codex CLI
 
@@ -246,11 +247,12 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
 #### Manual Install
 ```bash
 git clone https://github.com/hyhmrright/brooks-lint.git /tmp/brooks-lint
-mkdir -p ~/.codex/skills/brooks-lint
-cp -r /tmp/brooks-lint/skills/* ~/.codex/skills/brooks-lint/
+mkdir -p ~/.codex/skills
+cp -r /tmp/brooks-lint/skills/* ~/.codex/skills/   # flat — matches the skill-installer layout
 ```
+> Or simply: `./scripts/install.sh codex`
 
-### More platforms — OpenCode · Cursor · Windsurf · Antigravity · pi · Copilot · Kiro
+### More platforms — OpenCode · Cursor · Windsurf · Antigravity · pi · Copilot · Kiro · Factory Droid
 
 brooks-lint ships as standard [Agent Skills](https://agentskills.io). **Any agent that loads Agent
 Skills runs all six modes with no conversion** — one command installs them:
@@ -258,7 +260,7 @@ Skills runs all six modes with no conversion** — one command installs them:
 ```bash
 # pick your platform; --project installs into the current repo instead of your global config
 curl -fsSL https://raw.githubusercontent.com/hyhmrright/brooks-lint/main/scripts/install.sh | bash -s -- <platform>
-#   <platform> = opencode · cursor · windsurf · antigravity · pi · kiro · copilot · agents
+#   <platform> = opencode · cursor · windsurf · antigravity · pi · kiro · copilot · droid · gemini · codex · agents
 ```
 
 The installer copies the skills **flat** into the right folder for your platform, so the shared
@@ -308,7 +310,13 @@ Full guide: [docs/pi-setup.md](docs/pi-setup.md).
 Full guide: [docs/kiro-setup.md](docs/kiro-setup.md).
 </details>
 
-> **🧪 Verification status.** Claude Code, Gemini CLI, and Codex CLI are maintainer-verified. The seven
+<details><summary><b>Factory Droid</b></summary>
+
+`./scripts/install.sh droid` → `~/.factory/skills` (registers `/brooks-review`; reads `AGENTS.md`).
+Full guide: [docs/factory-droid-setup.md](docs/factory-droid-setup.md).
+</details>
+
+> **🧪 Verification status.** Claude Code, Gemini CLI, and Codex CLI are maintainer-verified. The eight
 > platforms above are documented from each tool's official skill spec and verified at the file-layout
 > level (the installer is tested), but not yet end-to-end run by the maintainer on every platform. Tried
 > one — working **or** broken? [Open an issue](https://github.com/hyhmrright/brooks-lint/issues/new) with

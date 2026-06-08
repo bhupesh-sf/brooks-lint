@@ -33,9 +33,10 @@ layout wrong:
 curl -fsSL https://raw.githubusercontent.com/hyhmrright/brooks-lint/main/scripts/install.sh | bash -s -- <platform>
 ```
 
-`<platform>` ∈ `opencode · cursor · windsurf · antigravity · pi · kiro · copilot · claude · agents`.
-Add `--project` to install into the current repo instead of your global config. `agents` targets the
-vendor-neutral `~/.agents/skills` folder that Cursor, Copilot, and pi all read.
+`<platform>` ∈ `opencode · cursor · windsurf · antigravity · pi · kiro · copilot · droid · gemini ·
+codex · claude · agents`. Add `--project` to install into the current repo instead of your global
+config. `agents` targets the vendor-neutral `~/.agents/skills` folder that Cursor, Copilot, pi, Gemini,
+and Codex all read.
 
 ## Per-platform guides
 
@@ -48,8 +49,11 @@ vendor-neutral `~/.agents/skills` folder that Cursor, Copilot, and pi all read.
 | pi | [pi-setup.md](pi-setup.md) | `~/.pi/agent/skills`, `.pi/skills`, settings array | ✅ |
 | GitHub Copilot | [copilot-setup.md](copilot-setup.md) | `.github/skills`, `.claude/skills`, `~/.copilot/skills` | ✅ |
 | Kiro | [kiro-setup.md](kiro-setup.md) | `.kiro/skills`, `~/.kiro/skills` | ✅ |
+| Factory Droid | [factory-droid-setup.md](factory-droid-setup.md) | `~/.factory/skills`, `.factory/skills`, `.agent/skills` | ✅ |
 
 For Claude Code, Gemini CLI, and Codex CLI, see the [README install section](../README.md#installation).
+`./scripts/install.sh gemini` and `./scripts/install.sh codex` also work and use the flat layout these
+two require (Gemini discovers skills only one level deep).
 
 ## Any other agent
 

@@ -21,6 +21,20 @@ All notable changes to brooks-lint are documented here.
   entries that link to the docs, plus a verification-status note inviting
   community end-to-end reports. Resolves the OpenCode compatibility request (#14).
 
+- **Factory Droid support** — added `droid` to the installer and a
+  `docs/factory-droid-setup.md` guide. Droid natively loads `SKILL.md` from
+  `~/.factory/skills` / `.factory/skills` and reads `AGENTS.md`.
+- **`install.sh` now covers Gemini and Codex** (`gemini`, `codex` targets) so a
+  single command installs every documented platform.
+
+### Fixed
+
+- **Gemini CLI manual install was broken** — the old `cp -r skills/*
+  ~/.gemini/skills/brooks-lint/` nested every `SKILL.md` two levels deep, and
+  Gemini only discovers skills **one level deep**, so none of the six skills were
+  found. Corrected to a flat `~/.gemini/skills/` install (EN + zh-CN READMEs).
+  Also flattened the Codex manual install to match the skill-installer layout.
+
 ### Changed
 
 - **`AGENTS.md`** now describes brooks-lint as a portable Agent-Skills tool
